@@ -1,5 +1,4 @@
 package music2;
-
 import com.mysql.jdbc.Connection;
 import java.sql.*;
 
@@ -49,6 +48,23 @@ public class REPORTS {
 			}
 		}
 	}
-	
-	
+	/*3 Produce the list of the top 10 selling items*/
+	public static void topTenProducts() throws SQLException {
+		String sql = "SELECT SUM(quantity) AS quantity ,artist, title FROM sales INNER JOIN product ON FK_PRODUCT_CODE = PRODUCT_CODE GROUP BY PRODUCT_CODE ORDER BY quantity DESC LIMIT 10";
+
+		ResultSet rs = null;
+		try(
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				) {
+			rs = stmt.executeQuery();
+			System.out.println("The top 10 are:");
+			while (rs.next()) {
+				StringBuffer bf = new StringBuffer();
+				bf.append(rs.getString("artist"));
+				bf.append(rs.getString("title") + ": ");
+				bf.append(rs.getString("quantity") +", ");
+				System.out.println(bf.toString());
+			}
+		}
+	}	
 }

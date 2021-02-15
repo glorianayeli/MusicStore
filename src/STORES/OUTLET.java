@@ -8,6 +8,16 @@ public class OUTLET {
 	private int zip; 
 	private String phone;
 	
+	public OUTLET(int outlet_number, String address, String city, String state, int zip, String phone) {
+		super();
+		this.outlet_number = outlet_number;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phone = phone;
+	}
+
 	public int getOutlet_number() {
 		return outlet_number;
 	}

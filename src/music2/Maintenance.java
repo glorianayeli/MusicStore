@@ -173,7 +173,7 @@ public class Maintenance {
 		}
 	}
 	/*Add/modify/drop customer*/
-public static boolean addCustomer(String customer_name, String address, String city, String state, int zip, int phone) throws SQLException {
+public static boolean addCustomer(String customer_name, String address, String city, String state, int zip, String phone) throws SQLException {
 		
 		String sql = "INSERT INTO customer (customer_name, address, city, state, zip, phone) VALUES (?,?)";
 		PreparedStatement stmt = null;
@@ -185,7 +185,7 @@ public static boolean addCustomer(String customer_name, String address, String c
 			stmt.setString(3, city);
 			stmt.setString(4, state);
 			stmt.setInt(6, zip);
-			stmt.setInt(7, phone);
+			stmt.setString(7, phone);
 			
 			int rs = stmt.executeUpdate();
 			if(rs == 1) {
@@ -242,7 +242,7 @@ public static boolean addCustomer(String customer_name, String address, String c
 			stmt.setString(3, customer.getCity());
 			stmt.setString(4, customer.getState());
 			stmt.setInt(5, customer.getZip());
-			stmt.setInt(6, customer.getPhone());
+			stmt.setString(6, customer.getPhone());
 			
 			int affected = stmt.executeUpdate();
 			

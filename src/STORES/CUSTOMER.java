@@ -7,7 +7,19 @@ public class CUSTOMER {
 	private String city;
 	private String state;
 	private int zip;
-	private int phone;
+	private String phone;
+	
+	public CUSTOMER(int cUSTOMER_ID, String customer_name, String address, String city, String state, int zip,
+			String phone) {
+		super();
+		CUSTOMER_ID = cUSTOMER_ID;
+		this.customer_name = customer_name;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phone = phone;
+	}
 
 	public int getCUSTOMER_ID() {
 		return CUSTOMER_ID;
@@ -45,10 +57,10 @@ public class CUSTOMER {
 	public void setZip(int zip) {
 		this.zip = zip;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 }

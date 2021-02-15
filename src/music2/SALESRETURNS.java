@@ -3,6 +3,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.*;
 import com.mysql.jdbc.Connection;
+
+import STORES.RETURNS;
 import STORES.SALE;
 
 public class SALESRETURNS {
@@ -119,5 +121,42 @@ public class SALESRETURNS {
 		
 	}
 	/*View a return (given date and customer id)*/
-	
+	public static RETURNS viewReturns(String date, int cutId) throws SQLException {
+		/*generating a query for get the sql*/
+		String sql = "SELECT * FROM return WHERE RETURN_DATE = ? AND FK_CUSTOMER_ID = ?";
+		ResultSet rs = null;
+
+		try (
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				){
+			stmt.setString(1, date);
+			stmt.setInt(2, cutId);
+			rs = stmt.executeQuery();
+			/*run each date in the rs*/
+			if (rs.next()) {
+				RETURNS returnNew = new RETURNS();
+				returnNew.setFK_OUTLET_NUMBER(rs.getInt("FK_OUTLET_NUMBER"));
+				returnNew.setFK_PRODUCT_CODE(rs.getInt("FK_PRODUCT_CODE"));
+				returnNew.setFK_CUSTOMER_ID(rs.getInt("FK_CUSTOMER_ID"));
+				returnNew.setRETURN_DATE(rs.getString("RETURN_DATE"));
+				returnNew.setRETURN_TIME(rs.getString("RETURN_TIME"));
+				returnNew.setQuantity(rs.getInt("quantity"));
+				returnNew.setReason(rs.getString("reason"));
+				
+				
+				return returnNew;
+			} else {
+				return null;
+			}
+
+		} catch (SQLException e) {
+			System.err.println(e);
+			return null;
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+		}
+		
+	}
 }

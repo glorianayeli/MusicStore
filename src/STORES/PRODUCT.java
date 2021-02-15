@@ -3,9 +3,19 @@ package STORES;
 public class PRODUCT {
 	private String artist;
 	private String title;
-	private int cost;
+	private float cost;
 	private float sale_price;
 	private int product_code;
+	
+	public PRODUCT( int product_code, String artist, String title, float cost, float sale_price) {
+		super();
+		this.product_code = product_code;
+		this.artist = artist;
+		this.title = title;
+		this.cost = cost;
+		this.sale_price = sale_price;
+	}
+
 	
 	/*Getters and Setters*/
 	public String getArtist() {
@@ -20,7 +30,7 @@ public class PRODUCT {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getCost() {
+	public float getCost() {
 		return cost;
 	}
 	public void setCost(int cost) {

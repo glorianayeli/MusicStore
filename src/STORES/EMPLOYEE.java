@@ -5,6 +5,13 @@ public class EMPLOYEE {
 	private String emp_name;
 	private int FK_OUTLET_NUMBER;
 	
+	public EMPLOYEE(int eMP_NUMBER, String emp_name, int fK_OUTLET_NUMBER) {
+		super();
+		EMP_NUMBER = eMP_NUMBER;
+		this.emp_name = emp_name;
+		FK_OUTLET_NUMBER = fK_OUTLET_NUMBER;
+	}
+
 	public int getEMP_NUMBER() {
 		return EMP_NUMBER;
 	}
