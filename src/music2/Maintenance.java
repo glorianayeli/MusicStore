@@ -263,7 +263,7 @@ public static boolean addCustomer(String customer_name, String address, String c
 	
 	/*Add/modify/drop product*/
 	
-	public static boolean addProduct(String artist, String title, float cost, int sale_price) throws SQLException {
+	public static boolean addProduct(String artist, String title, float cost, float sale_price) throws SQLException {
 		
 		String sql = "INSERT INTO product(artist, title, cost, sale_price) VALUES (?,?,?,?)";
 		PreparedStatement stmt = null;
@@ -273,7 +273,7 @@ public static boolean addCustomer(String customer_name, String address, String c
 			stmt.setString(1, artist);
 			stmt.setString(2, title);
 			stmt.setFloat(3, cost);
-			stmt.setInt(4, sale_price);
+			stmt.setFloat(4, sale_price);
 			int rs = stmt.executeUpdate();
 			if(rs == 1) {
 				return true;
@@ -325,7 +325,7 @@ public static boolean addCustomer(String customer_name, String address, String c
 				stmt.setString(1, product.getArtist());
 				stmt.setString(2, product.getTitle());
 				stmt.setFloat(3, product.getCost());
-				stmt.setInt(4, product.getSale_price());
+				stmt.setFloat(4, product.getSale_price());
 				stmt.setInt(5, product.getProduct_code());
 			
 			int affected = stmt.executeUpdate();

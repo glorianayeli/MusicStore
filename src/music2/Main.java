@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import com.mysql.jdbc.Connection;
 
+import STORES.SALE;
+
 public class Main {
 //	private static final String USERNAME = "dbuser";
 //	private static final String PASSWORD = "dbpassword";
@@ -25,9 +27,9 @@ public class Main {
 //				}
 //			}
 			 
-			
-			Scanner enter = new Scanner(System.in);
-			
+			SALE saleNew = new SALE();
+			saleNew =  SALESRETURNS.viewSale("2021-02-15",1);
+			System.out.println(saleNew.getId());
 //			System.out.println("Enter address");
 //			String address = enter.nextLine();
 //			System.out.println("Enter city");

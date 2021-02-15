@@ -4,7 +4,7 @@ public class PRODUCT {
 	private String artist;
 	private String title;
 	private int cost;
-	private int sale_price;
+	private float sale_price;
 	private int product_code;
 	
 	/*Getters and Setters*/
@@ -26,7 +26,7 @@ public class PRODUCT {
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
-	public int getSale_price() {
+	public float getSale_price() {
 		return sale_price;
 	}
 	public void setSale_price(int sale_price) {
