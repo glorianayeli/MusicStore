@@ -30,6 +30,7 @@ public class Main {
 		
 			
 			REPORTS.yearlyReport("2021");
+			REPORTS.employeeReports(1);
 			
 //			System.out.println("Enter address");
 //			String address = enter.nextLine();

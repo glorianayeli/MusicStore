@@ -22,14 +22,33 @@ public class REPORTS {
 			System.out.println("Sales in a year:");
 			while (rs.next()) {
 				StringBuffer bf = new StringBuffer();
-				bf.append(rs.getString("customer_name"));
+				bf.append(rs.getString("customer_name")+ ": ");
 				bf.append(rs.getString("SALE_DATE") + ": ");
 				bf.append(rs.getString("SALE_TIME") +", ");
 				System.out.println(bf.toString());
 			}
 		}
 	}
+	/*Produce sales report for employee*/
+	public static void employeeReports(int id) throws SQLException {
 
+		String sql = "SELECT SALE_DATE, SALE_TIME, emp_name FROM sales INNER JOIN employee ON sales.FK_EMP_NUMBER = employee.EMP_NUMBER WHERE EMP_NUMBER = ?";
+		ResultSet rs = null;
+		try(
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				) {
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			System.out.println("Sales for employee:");
+			while (rs.next()) {
+				StringBuffer bf = new StringBuffer();
+				bf.append(rs.getString("emp_name") + ": ");
+				bf.append(rs.getString("SALE_DATE") + ": ");
+				bf.append(rs.getString("SALE_TIME") +", ");
+				System.out.println(bf.toString());
+			}
+		}
+	}
 	
 	
 }
