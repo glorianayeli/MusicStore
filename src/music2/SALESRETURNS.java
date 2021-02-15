@@ -47,6 +47,39 @@ public class SALESRETURNS {
 			}
 		}
 	}
+	/*process a returns*/
+	public static boolean addReturns( int FK_OUTLET_NUMBER, int FK_PRODUCT_CODE, int FK_CUSTOMER_ID, String RETURN_DATE, String RETURN_TIME, int quantity, String reason ) throws SQLException {
+		
+		String sql = "INSERT INTO OUTLET(FK_OUTLET_NUMBER, FK_PRODUCT_CODE, FK_CUSTOMER_ID, RETURN_DATE, RETURN_TIME, quantity, reason) VALUES (?,?,?,?,?,?,?)";
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, FK_OUTLET_NUMBER);
+			stmt.setInt(2, FK_PRODUCT_CODE);
+			stmt.setInt(3, FK_CUSTOMER_ID);
+			stmt.setString(4, RETURN_DATE);
+			stmt.setString(5, RETURN_TIME);
+			stmt.setInt(6, quantity);
+			stmt.setString(7, reason);
+			
+			int rs = stmt.executeUpdate();
+			if(rs == 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}catch(SQLException e) {
+			System.err.println("Error:" + e);
+			return false;
+		}finally{
+			ConnectionManager.getInstance().close();
+			if (stmt != null) {
+				stmt.close();
+			}
+		}
+	}
 	/*View a sale (given date and customer id)*/
 	public static SALE viewSale(String date, int cutId) throws SQLException {
 		/*generating a query for get the sql*/
@@ -85,5 +118,6 @@ public class SALESRETURNS {
 		}
 		
 	}
+	/*View a return (given date and customer id)*/
 	
 }

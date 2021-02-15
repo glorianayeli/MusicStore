@@ -27,9 +27,10 @@ public class Main {
 //				}
 //			}
 			 
-			SALE saleNew = new SALE();
-			saleNew =  SALESRETURNS.viewSale("2021-02-15",1);
-			System.out.println(saleNew.getId());
+		
+			
+			REPORTS.yearlyReport("2021");
+			
 //			System.out.println("Enter address");
 //			String address = enter.nextLine();
 //			System.out.println("Enter city");
